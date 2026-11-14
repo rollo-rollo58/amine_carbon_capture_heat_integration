@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #091416;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body { margin: 0; min-width: 320px; background: #091416; color: #d8e5e0; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.panel { background: #11272a; border: 1px solid #2b4546; border-radius: 14px; }
+.panel-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; }
+.mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.soft-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
+.soft-scroll::-webkit-scrollbar-thumb { background: #52706b; border-radius: 20px; }
+svg text { font-family: Inter, system-ui, sans-serif; }
+:focus-visible { outline: 2px solid #87ebc1; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; }
+}

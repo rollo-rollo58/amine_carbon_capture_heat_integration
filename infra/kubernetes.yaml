@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carbonloop-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: carbonloop-api
+  template:
+    metadata:
+      labels:
+        app: carbonloop-api
+    spec:
+      containers:
+        - name: api
+          image: carbonloop/api:development
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: carbonloop-api
+spec:
+  selector:
+    app: carbonloop-api
+  ports:
+    - port: 8000
+      targetPort: 8000

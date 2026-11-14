@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 30s
+scrape_configs:
+  - job_name: carbonloop-research-api
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['carbonloop-api:8000']
